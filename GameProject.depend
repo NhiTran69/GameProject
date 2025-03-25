@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1742891244 source:d:\gameproject\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"graphics.h"
+	"mouse.h"
+	"defs.h"
+
+1742891142 source:d:\gameproject\game.cpp
+	"graphics.h"
+	"sprite.h"
+	"mouse.h"
+	"defs.h"
+
+1742878536 d:\gameproject\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+
+1742878605 d:\gameproject\sprite.h
+	<SDL.h>
+	<vector>
+	"defs.h"
+
+1742891358 d:\gameproject\defs.h
+
+1742880161 d:\gameproject\mouse.h
+	"sprite.h"
+	"defs.h"
+
