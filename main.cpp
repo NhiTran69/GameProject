@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     game.loadBackground("Image\\bg.png");
 
-    vector<const char*> level = {"map1.txt", "map2.txt"};
+    vector<const char*> level = {"map1.txt", "map2.txt", "map3.txt"};
     int cnt(0);
 
     Mouse mouse(game);
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
             // Vẽ Mouse với sprite tương ứng
             game.renderMouse(mouse, mouse.sprite);
 
-            gameTime.showTime(timeText, 800, 170);
+            gameTime.showTime(timeText, 830, 170);
 
             if (isWin) {
                 game.renderTexture(youWin, 355, 290);
