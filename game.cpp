@@ -11,7 +11,6 @@ void Sprite::init(Graphics &game, int frames, const int clip_[][4]) {
     leftTex = game.loadTexture("Image\\Blue_Left.png");
     rightTex = game.loadTexture("Image\\Blue_Right.png");
 
-
     SDL_Rect clip;
     for (int i = 0; i < frames; i++) {
         clip.x = clip_[i][0];
@@ -23,9 +22,17 @@ void Sprite::init(Graphics &game, int frames, const int clip_[][4]) {
 }
 
 void Sprite::tick() {
+    Uint32 currentTime = SDL_GetTicks();
     if (direction != DIR_NONE) {
-        currentFrame = (currentFrame + 1) % clips.size();
+        // Chỉ cập nhật Frame nếu đủ thời gian
+        if (currentTime - lastFrame >= figureDelay) {
+            currentFrame = (currentFrame + 1) % clips.size();
+            lastFrame = currentTime;
+        }
         lastDir = direction;
+    }
+    else {
+        currentFrame = 0;
     }
 }
 
@@ -49,7 +56,7 @@ SDL_Texture* Sprite::getCurrentTex() const {
 
 const SDL_Rect* Sprite::getCurrentClip() const {
     if (direction == DIR_NONE) {
-        return &clips[FIGURE_FRAMES - 1];
+        return &clips[0];
     }
     return &(clips[currentFrame]);
 }
@@ -64,12 +71,6 @@ Sprite::~Sprite() {
 
 // Định nghĩa các hàm của Graphics
 
-void Graphics::logErrorAndExit(const char* msg, const char* error) {
-    SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR,
-                   "%s: %s", msg, error);
-    SDL_Quit();
-}
-
 void Graphics::init() {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         logErrorAndExit("SDL_Init", SDL_GetError());
@@ -78,7 +79,7 @@ void Graphics::init() {
     // Tạo cửa sổ
     window = SDL_CreateWindow(WINDOW_TITLE, SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,
                               SCREEN_WIDTH, SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
-    if (window == nullptr) {
+    if (!window) {
         logErrorAndExit("CreateWindow", SDL_GetError());
     }
 
@@ -87,10 +88,19 @@ void Graphics::init() {
         logErrorAndExit( "SDL_image error:", IMG_GetError());
     }
 
+    // Khởi tạo SDL_ttf
+    if (TTF_Init() == -1) {
+        logErrorAndExit("TTF_Init", TTF_GetError());
+    }
+
+    if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 ){
+        logErrorAndExit( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+    }
+
     // Tạo renderer
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-    if (renderer == nullptr) {
+    if (!renderer) {
         logErrorAndExit("CreateRenderer", SDL_GetError());
     }
     // Cài đặt chất lượng phép biến đổi hình ảnh
@@ -99,9 +109,18 @@ void Graphics::init() {
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
-void Graphics::prepareScene(SDL_Texture *background){
+void Graphics::loadBackground(const char *name) {
+    bg = IMG_LoadTexture(renderer, name);
+    if (!bg) {
+        logErrorAndExit("Failed to load background texture!", IMG_GetError());
+    }
+}
+
+void Graphics::prepareScene(){
     SDL_RenderClear(renderer);
-    SDL_RenderCopy( renderer, background, NULL, NULL);
+    if (bg) {
+        SDL_RenderCopy(renderer, bg, NULL, NULL);
+    }
 }
 
 void Graphics::presentScene(){
@@ -121,7 +140,6 @@ SDL_Texture *Graphics::loadTexture(const char *filename){
 
 void Graphics::renderTexture(SDL_Texture *texture, int x, int y){
     SDL_Rect dest;
-
     dest.x = x;
     dest.y = y;
     SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
@@ -131,7 +149,6 @@ void Graphics::renderTexture(SDL_Texture *texture, int x, int y){
 
 void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y){
     SDL_Rect dest;
-
     dest.x = x;
     dest.y = y;
     dest.w = src->w;
@@ -142,6 +159,7 @@ void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y){
 
 void Graphics::quit(){
     IMG_Quit();
+    Mix_Quit();
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

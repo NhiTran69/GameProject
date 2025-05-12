@@ -1,8 +1,9 @@
 #ifndef SPRITE_H_INCLUDED
 #define SPRITE_H_INCLUDED
 
-#include <SDL.h>
 #include <vector>
+#include <SDL.h>
+#include <SDL_image.h>
 #include "defs.h"
 
 using namespace std;
@@ -20,6 +21,8 @@ struct Sprite {
     int direction = DIR_NONE;
     int lastDir = DIR_RIGHT;
 
+    Uint32 lastFrame = 0;
+
     Sprite() = default;
 
     // Hàm init nhận renderer và load texture bên trong
@@ -30,4 +33,10 @@ struct Sprite {
     ~Sprite();
 };
 
+inline static void capFPS(Uint32 frameStart) {
+    int frameTime = SDL_GetTicks() - frameStart;
+    if (frameDelay > frameTime) {
+        SDL_Delay(frameDelay - frameTime);
+    }
+}
 #endif // SPRITE_H_INCLUDED

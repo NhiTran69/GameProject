@@ -1,30 +1,62 @@
 # depslib dependency file v1.0
-1742891244 source:d:\gameproject\main.cpp
-	<iostream>
-	<SDL.h>
-	<SDL_image.h>
+1746974101 source:d:\gameproject\main.cpp
 	"graphics.h"
 	"mouse.h"
 	"defs.h"
+	"map.h"
+	"text.h"
+	"time.h"
 
-1742891142 source:d:\gameproject\game.cpp
+1746944925 source:d:\gameproject\game.cpp
 	"graphics.h"
 	"sprite.h"
 	"mouse.h"
 	"defs.h"
 
-1742878536 d:\gameproject\graphics.h
+1746980789 d:\gameproject\graphics.h
+	"defs.h"
+
+1746980789 d:\gameproject\sprite.h
+	<vector>
 	<SDL.h>
 	<SDL_image.h>
+	"defs.h"
 
-1742878605 d:\gameproject\sprite.h
+1746980789 d:\gameproject\defs.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<SDL.h>
+	<SDL_ttf.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	"music.h"
+
+1746980790 d:\gameproject\mouse.h
+	<SDL.h>
+	"sprite.h"
+	"defs.h"
+	"map.h"
+	"defs.h"
+	<vector>
+
+1746892343 source:d:\gameproject\map.cpp
+	"map.h"
+	"graphics.h"
+	"mouse.h"
+	"defs.h"
+
+1746867442 d:\gameproject\map.h
 	<SDL.h>
 	<vector>
+
+1744649274 d:\gameproject\text.h
+	"graphics.h"
 	"defs.h"
 
-1742891358 d:\gameproject\defs.h
-
-1742880161 d:\gameproject\mouse.h
-	"sprite.h"
+1745082863 d:\gameproject\time.h
 	"defs.h"
+
+1746980790 d:\gameproject\music.h
 

@@ -32,7 +32,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="defs.h" />
+		<Unit filename="game.cpp" />
+		<Unit filename="graphics.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="map.cpp" />
+		<Unit filename="map.h" />
+		<Unit filename="mouse.h" />
+		<Unit filename="music.h" />
+		<Unit filename="sprite.h" />
+		<Unit filename="text.h" />
+		<Unit filename="time.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

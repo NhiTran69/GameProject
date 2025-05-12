@@ -1,8 +1,7 @@
 #ifndef GRAPHICS_H_INCLUDED
 #define GRAPHICS_H_INCLUDED
 
-#include <SDL.h>
-#include <SDL_image.h>
+#include "defs.h"
 
 struct Sprite;
 struct Mouse;
@@ -10,10 +9,13 @@ struct Mouse;
 struct Graphics {
     SDL_Window *window;
     SDL_Renderer *renderer;
-    void logErrorAndExit(const char* msg, const char* error);
-    void init();
+    SDL_Texture *bg;
+    SDL_Texture *play;
 
-    void prepareScene(SDL_Texture *background = nullptr);
+    void init();
+    void loadBackground(const char *name);
+
+    void prepareScene();
     void presentScene();
 
     SDL_Texture *loadTexture(const char *filename);
