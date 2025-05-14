@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1747029770 source:d:\gameproject\main.cpp
+1747182590 source:d:\gameproject\main.cpp
 	"graphics.h"
 	"mouse.h"
 	"defs.h"
@@ -41,7 +41,7 @@
 	"defs.h"
 	<vector>
 
-1747062681 source:d:\gameproject\map.cpp
+1747182590 source:d:\gameproject\map.cpp
 	"map.h"
 	"graphics.h"
 	"mouse.h"
