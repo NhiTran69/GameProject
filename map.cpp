@@ -8,7 +8,6 @@ using namespace std;
 void Tileset::addTile(Graphics &game, int id, const char *name) {
     SDL_Texture *texture = game.loadTexture(name);
     if (!texture) {
-        // Gọi hàm xử lý lỗi và thoát nếu không tải được
         logErrorAndExit("Failed to load tile texture", IMG_GetError());
     }
 

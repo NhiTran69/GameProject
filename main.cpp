@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     game.loadBackground("Image\\bg.png");
 
-    vector<const char*> level = {"map1.txt", "map2.txt", "map3.txt"};
+    vector<const char*> level = {"map1.txt", "map2.txt", "map3.txt", "map4.txt"};
     int cnt(0);
 
     Mouse mouse(game);

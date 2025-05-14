@@ -127,10 +127,10 @@ void Graphics::presentScene(){
     SDL_RenderPresent(renderer);
 }
 
-SDL_Texture *Graphics::loadTexture(const char *filename){
+SDL_Texture *Graphics::loadTexture(const char *name){
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO,
-                   "Loading %s", filename);
-    SDL_Texture *texture = IMG_LoadTexture(renderer, filename);
+                   "Loading %s", name);
+    SDL_Texture *texture = IMG_LoadTexture(renderer, name);
     if (texture == nullptr) {
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION,SDL_LOG_PRIORITY_ERROR,
                        "Load texture %s", IMG_GetError());

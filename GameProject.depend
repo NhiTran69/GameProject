@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1746980789 source:d:\gameproject\main.cpp
+1747029770 source:d:\gameproject\main.cpp
 	"graphics.h"
 	"mouse.h"
 	"defs.h"
@@ -7,7 +7,7 @@
 	"text.h"
 	"time.h"
 
-1746980790 source:d:\gameproject\game.cpp
+1747062681 source:d:\gameproject\game.cpp
 	"graphics.h"
 	"sprite.h"
 	"mouse.h"
@@ -22,7 +22,7 @@
 	<SDL_image.h>
 	"defs.h"
 
-1746980789 d:\gameproject\defs.h
+1747061647 d:\gameproject\defs.h
 	<iostream>
 	<fstream>
 	<sstream>
@@ -33,7 +33,7 @@
 	<SDL_mixer.h>
 	"music.h"
 
-1746980790 d:\gameproject\mouse.h
+1747062508 d:\gameproject\mouse.h
 	<SDL.h>
 	"sprite.h"
 	"defs.h"
@@ -41,7 +41,7 @@
 	"defs.h"
 	<vector>
 
-1747020184 source:d:\gameproject\map.cpp
+1747062681 source:d:\gameproject\map.cpp
 	"map.h"
 	"graphics.h"
 	"mouse.h"
@@ -55,8 +55,7 @@
 	"graphics.h"
 	"defs.h"
 
-1746980790 d:\gameproject\time.h
-	"defs.h"
+1747061663 d:\gameproject\time.h
 
 1746980790 d:\gameproject\music.h
 

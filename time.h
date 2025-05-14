@@ -1,6 +1,5 @@
 #ifndef TIME_H_INCLUDED
 #define TIME_H_INCLUDED
-#include "defs.h"
 using namespace std;
 
 struct Time {
