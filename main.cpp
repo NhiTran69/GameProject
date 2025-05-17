@@ -82,7 +82,6 @@ int main(int argc, char *argv[])
                 int y = e.button.y;
                 if (x >= 900 && x <= 960 && y >= 40 && y <= 100) {
                     if (isMusic) {
-                        //game.loadTexture(off, 900, 40);
                         music.pause();
                         isMusic = false;
                     }
