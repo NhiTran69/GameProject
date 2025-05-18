@@ -129,15 +129,11 @@ int main(int argc, char *argv[])
         capFPS(frameStart);  // Giới hạn FPS
     }
     delete maps;
-    if (youWin != nullptr) {
-        SDL_DestroyTexture(youWin);
-    }
-    if (play != nullptr) {
-        SDL_DestroyTexture(play);
-    }
-    if (next != nullptr) {
-        SDL_DestroyTexture(next);
-    }
+    freeTexture(play);
+    freeTexture(next);
+    freeTexture(icon);
+    freeTexture(off);
+    freeTexture(youWin);
     game.quit();
     SDL_Quit();
     return 0;

@@ -41,5 +41,11 @@ inline void logErrorAndExit(const char* msg, const char* error) {
     exit(1);
 }
 
+inline void freeTexture(SDL_Texture *texture) {
+    if (texture) {
+        SDL_DestroyTexture(texture);
+    }
+}
+
 const SDL_Color textColor = {85, 114, 138, 255};
 #endif // DEFS_H_INCLUDED
