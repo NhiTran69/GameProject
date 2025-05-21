@@ -23,7 +23,7 @@
       + Event chuột
       + Font
       + Cách kiểm tra va chạm của nhân vật đơn giản
-    - Mô tả mức độ sử dụng AI: 15%, hỗ trợ phần time, đọc file map, vẽ map khi chuyển level.
+    - Mô tả mức độ sử dụng AI: 10%, hỗ trợ phần time, đọc file map, vẽ map khi chuyển level.
 5. Các kiến thức học được:
     - Làm game đơn giản sử dụng SDL2
     - Cách tổ chức các file trong dự án
